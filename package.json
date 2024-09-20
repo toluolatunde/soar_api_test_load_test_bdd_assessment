@@ -1,0 +1,33 @@
+{
+  "name": "soar_api_bdd_assessment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cypress.config.js",
+  "scripts": {
+    "clean: reports": "rm-R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
+    "pretest": "npm run clean: reports",
+    "scripts": "cypress run",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/.json > cypress/reports/mochareports/report.json",
+    "generate-report": "marge cypress/reports/mochareports/report.json -f report-o cypress/reports/mochareports inline",
+    "test": "npm run scripts",
+    "test:cli": "cypress run",
+    "test:all": "cypress run-spec \"*/. testcases\"",
+    "cy:run": "cypress run",
+    "start:ci": "",
+    "open: report": "open cypress/reports/mochawesome.html",
+    "cy:chrome": "npx cypress run-browser chrome -q",
+    "html-report": "cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.4",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "cypress": "^13.14.2",
+    "cypress-mochawesome-reporter": "^3.8.2"
+  },
+  "dependencies": {
+    "qs": "^6.13.0"
+  }
+}
